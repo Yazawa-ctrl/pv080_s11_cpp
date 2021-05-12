@@ -42,7 +42,7 @@ void demoBufferOverflowData() {
 	printf("%s@vulnerable.machine.com: ", userName);
 	fflush(stdout);
 	//gets(passwd);  
-	scanf("%8s", passwd); // use scanf("%s", passwd); if gets fails with identifier not found
+	scanf("%7s", passwd); // use scanf("%s", passwd); if gets fails with identifier not found
 
 	// Check user rights (set to NORMAL_USER and not changed in code)
 	if (userRights == NORMAL_USER) {
@@ -71,7 +71,7 @@ void demoAdjacentMemoryOverflow(char* userName, char* password) {
 
 	char message[100];
 	char realPassword[] = "very secret password nbusr123";
-	char buf[8];
+	char buf[USER_INPUT_MAX_LENGTH];
 
 	// print some info about variables
 	printf("%-20s: %p\n", "message", message);
