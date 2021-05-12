@@ -42,7 +42,7 @@ void demoBufferOverflowData() {
 	printf("%s@vulnerable.machine.com: ", userName);
 	fflush(stdout);
 	//gets(passwd);  
-	scanf("%s", passwd); // use scanf("%s", passwd); if gets fails with identifier not found
+	scanf("%8s", passwd); // use scanf("%s", passwd); if gets fails with identifier not found
 
 	// Check user rights (set to NORMAL_USER and not changed in code)
 	if (userRights == NORMAL_USER) {
@@ -86,7 +86,7 @@ void demoAdjacentMemoryOverflow(char* userName, char* password) {
 	strncpy(buf, userName, sizeof(buf));              // We will copy only characters which fits into buf
 
 													  // Now print username to standard output - nothing sensitive, right?
-	sprintf(message, "Checking '%s' password\n", buf);
+	snprintf(message, "Checking '%s' password\n", buf);
 	printf("%s", message);
 	if (strcmp(password, realPassword) == 0) {
 		printf("Correct password.\n");
